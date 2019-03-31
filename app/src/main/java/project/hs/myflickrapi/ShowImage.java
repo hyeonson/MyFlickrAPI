@@ -75,6 +75,7 @@ public class ShowImage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent back_intent = new Intent(ShowImage.this, MainActivity.class);
                 startActivity(back_intent);
+                finish();
             }
         });
         save_btn.setOnClickListener(new View.OnClickListener() {

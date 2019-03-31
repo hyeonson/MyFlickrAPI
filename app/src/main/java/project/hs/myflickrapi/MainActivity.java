@@ -1,4 +1,4 @@
-package project.hs.myflickrapi;
+﻿package project.hs.myflickrapi;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String SEARCH_URL = "https://secure.flickr.com/services/rest/?method=flickr.photos.search";
     private String API_KEY = "&api_key=63b7e36db22d9f7ec0cd3f36b2179053";
-    private String PER_PAGE = "&per_page=20"; //일단 20개로
+    private String PER_PAGE = "&per_page=10"; //일단 20개로
     private String SORT = "&sort=interestingness-desc";
     private String FORMAT = "&format=json";
     private String CONTECT_TYPE = "&content_type=1";
@@ -269,6 +269,13 @@ public class MainActivity extends AppCompatActivity {
             Log.d("imgurl", "http://farm" + mData.getFarm() + ".static.flickr.com/" + mData.getServer()
             + "/" + mData.getId() + "_" + mData.getSecret() + ".jpg");
 
+            holder.url = imgurl;
+            holder.id = mData.getId();
+            holder.title = mData.getTitle();
+            Log.d("holder's url : ", holder.url);
+            //holder.imageView.setImageBitmap(bm);
+            Glide.with(convertView.getContext()).load(imgurl).into(holder.imageView);
+	/*
             Thread thread = new Thread(){
                 @Override
                 public void run(){
@@ -298,7 +305,7 @@ public class MainActivity extends AppCompatActivity {
             }catch (InterruptedException e){
                 e.printStackTrace();
             }
-
+            */
             holder.imageView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
